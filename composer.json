@@ -1,5 +1,5 @@
 {
-  "name": "whidegroup/module-volumetric-models",
+  "name": "whidegroup/module-3dview",
   "version": "1.0.4",
   "description": "Add your 3D models to Magento 2 products.",
   "type": "magento2-module",
