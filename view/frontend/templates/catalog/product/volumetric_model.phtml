@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Product volumetric model template
+ *
+ * @var $block   View
+ * @var $escaper Escaper
+ */
+
+use Whidegroup\VolumetricModels\Block\Catalog\Product\View;
+use Magento\Framework\Escaper;
+
+$volumetricModelPath  = $block->getVolumetricModelUrl();
+$buttonDisplayingMode = $block->getButtonDisplayingMode();
+$productId            = $block->getProduct()->getEntityId();
+$environmentTexture   = $block->getEnvironmentTexture($productId);
+$volumeModelEnabled   = $block->getVolumeModelEnabledByProduct($productId);
+$moduleEnabled        = $block->getModuleEnabled();
+
+?>
+
+<?php if (isset($volumetricModelPath) && $volumeModelEnabled && $moduleEnabled): ?>
+
+    <?php if ($buttonDisplayingMode == "productDetails" || $buttonDisplayingMode == "both"): ?>
+        <button class="primary volumetric-model-button">
+            <span><?= $escaper->escapeHtml(__('3D model')) ?></span>
+        </button>
+    <?php endif; ?>
+
+    <div class="volume-model-modal">
+        <div class="volume-model-modal-container" id="modal-body-content"
+             data-product-id="<?= $escaper->escapeHtml($productId) ?>"></div>
+        <div id="volume-model-loader">
+            <p><?= $escaper->escapeHtml(__("Loading 3D model...")) ?></p>
+            <div id="volume-model-loader-loading-bar">
+                <div id="volume-model-loader-loading-progress"></div>
+            </div>
+        </div>
+        <div id="volume-model-full-screen-mode-button" class="volume-model-modal-shadow-buttons"
+             title="<?= $escaper->escapeHtml(__("Enable full screen mode")) ?>">
+            <img src="<?= $escaper->escapeUrl(
+                $block->getViewFileUrl('Whidegroup_VolumetricModels::icons/full-screen.svg')
+                      ); ?>"
+                 alt="<?= $escaper->escapeHtml(__("Enable full screen mode")) ?>"/>
+        </div>
+    </div>
+    <div id="volume-model-full-screen-mode-container">
+        <div id="volume-model-full-screen-mode-disable" class="volume-model-modal-shadow-buttons"
+             title="<?= $escaper->escapeHtml(__("Disable full screen mode")) ?>">
+            <img src="<?= $escaper->escapeUrl(
+                $block->getViewFileUrl('Whidegroup_VolumetricModels::icons/full-screen-disable.svg')
+                      ); ?>"
+                 alt="<?= $escaper->escapeHtml(__("Disable full screen mode")) ?>"/>
+        </div>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Whidegroup_VolumetricModels/js/volume-model": {
+                    "displayingMode": "<?= $escaper->escapeHtml($buttonDisplayingMode) ?>",
+                    "viewFileUrl": "<?= $escaper->escapeUrl($block->getViewFileUrl('Whidegroup_VolumetricModels::icons/3D_view.png')); ?>"
+                }
+            }
+        }
+    </script>
+
+<?php endif; ?>

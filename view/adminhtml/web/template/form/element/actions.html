@@ -1,0 +1,47 @@
+<!-- ko if: $parent.source.data.product["volume_model"] -->
+<div class="admin__field"
+     visible="buttons.options.visible"
+     css="$data.additionalClasses"
+     attr="'data-index': index">
+    <div class="admin__field-label" visible="$data.labelVisible">
+        <label if="$data.label">
+            <span translate="label" attr="'data-config-scope': $data.scopeLabel"></span>
+        </label>
+    </div>
+    <div class="admin__field-control"
+         css="'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset && $data.isDifferedFromDefault">
+        <button type="button"
+                attr="'data-index': index, 'aria-labelledby': ariLabelledby, visible: buttons.preview.visible,
+                 title: buttons.preview.title, class: buttons.preview.classes"
+                data-bind="click: buttons.preview.action"
+        >
+            <span text="buttons.preview.text">Preview</span>
+        </button>
+        <button type="button"
+                attr="'data-index': index, 'aria-labelledby': ariLabelledby, visible: buttons.newModel.visible,
+                 title: buttons.newModel.title, class: buttons.newModel.classes"
+                data-bind="click: buttons.newModel.action"
+        >
+            <span attr="'class': buttons.newModel.classes" text="buttons.newModel.text">Load New</span>
+        </button>
+        <button type="button"
+                attr="'data-index': index, 'aria-labelledby': ariLabelledby, visible: buttons.remove.visible,
+                 title: buttons.remove.title, class: buttons.remove.classes"
+                data-bind="click: buttons.remove.action"
+        >
+            <span attr="'class': buttons.remove.classes" text="buttons.remove.text">Delete</span>
+        </button>
+        <span data-bind="visible: noticeVisible" attr="'id': statusMessageElementId"></span>
+    </div>
+</div>
+<div class="volume-model-modal">
+    <div class="volume-model-modal-container"
+         attr="'data-product-id': modal.productId, 'id': 'modal-body-content'"></div>
+    <div id="volume-model-loader">
+        <p text="modal.loadingText"></p>
+        <div id="volume-model-loader-loading-bar">
+            <div id="volume-model-loader-loading-progress"></div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

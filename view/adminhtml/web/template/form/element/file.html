@@ -1,0 +1,15 @@
+<input class="admin__control-file" type="file" data-bind="
+    hasFocus: focused,
+    event: { change: actions.change},
+    attr: {
+        name: inputName,
+        placeholder: placeholder,
+        'aria-describedby': noticeId,
+        id: uid,
+        disabled: disabled,
+        form: formId
+    }"
+>
+<div class="admin__field-note">
+    <span text="note"></span>
+</div>

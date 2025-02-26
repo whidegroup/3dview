@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="wg_volumetric_entity" resource="default" engine="innodb" comment="Whidegroup_VolumetricModels entity table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="varchar" name="model_path" length="255" nullable="false" comment="Path to the model"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="wg_volumetric_index" resource="default" engine="innodb" comment="Whidegroup_VolumetricModels index table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Entity Id"/>
+        <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Product Id"/>
+        <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+
+        <constraint xsi:type="foreign"
+                    referenceId="WHIDEGROUP_VOLUMETRIC_INDEX_VOLUMETRIC_ENTITY"
+                    table="wg_volumetric_index"
+                    column="entity_id"
+                    referenceTable="wg_volumetric_entity"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"
+        />
+        <constraint xsi:type="foreign"
+                    referenceId="WHIDEGROUP_VOLUMETRIC_INDEX_CATALOG_PRODUCT_ENTITY"
+                    table="wg_volumetric_index"
+                    column="product_id"
+                    referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"
+        />
+    </table>
+</schema>

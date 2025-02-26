@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="whidegroup" translate="label" sortOrder="10" class="whidegroup-tab">
+            <label>Whidegroup</label>
+        </tab>
+        <section id="volumeModel" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>3D View - Responsive Product Models</label>
+            <tab>whidegroup</tab>
+            <resource>Whidegroup_VolumetricModels::volumetricmodel_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rotation_enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Model Rotation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="button_displaying_mode" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Displaying Mode</label>
+                    <source_model>Whidegroup\VolumetricModels\Model\Config\Source\ButtonDisplayingMode</source_model>
+                    <comment>Choose where the button of the 3D model can be displayed.</comment>
+                </field>
+                <field id="fov_value" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>FOV of the camera</label>
+                    <validate>validate-digits-range digits-range-35-120</validate>
+                    <comment>Field of view (FOV) of the camera on scene. Value from 35 to 120.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

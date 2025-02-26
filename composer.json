@@ -1,0 +1,20 @@
+{
+  "name": "whidegroup/module-volumetric-models",
+  "version": "1.0.4",
+  "description": "Add your 3D models to Magento 2 products.",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Whidegroup\\VolumetricModels\\": ""
+    }
+  }
+}
