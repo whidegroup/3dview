@@ -1,20 +1,21 @@
 {
-  "name": "whidegroup/module-3dview",
-  "version": "1.0.4",
-  "description": "Add your 3D models to Magento 2 products.",
-  "type": "magento2-module",
-  "require": {
-    "magento/framework": "*"
-  },
-  "license": [
-    "Proprietary"
-  ],
-  "autoload": {
-    "files": [
-      "registration.php"
+    "name": "whidegroup/module-3dview",
+    "version": "1.0.4",
+    "description": "Add your 3D models to Magento 2 products.",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "^103.0",
+        "php": ">=8.1 <8.3"
+    },
+    "license": [
+        "Proprietary"
     ],
-    "psr-4": {
-      "Whidegroup\\VolumetricModels\\": ""
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Whidegroup\\VolumetricModels\\": ""
+        }
     }
-  }
 }
