@@ -56,7 +56,6 @@ define([
                     const buttons = buildButton(75, 75);
                     dots.append(buttons);
                 }
-                console.log(dots);
             }
             $(".volumetric-model-button").click(function () {
                 volumeModelModal.modal('openModal');

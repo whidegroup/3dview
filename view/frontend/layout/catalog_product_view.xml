@@ -9,7 +9,6 @@
         <block class="Whidegroup\VolumetricModels\Block\Catalog\Product\View"
                name="volumetric_model"
                template="Whidegroup_VolumetricModels::catalog/product/volumetric_model.phtml"
-               cacheable="false"
         />
     </referenceContainer>
 </page>
